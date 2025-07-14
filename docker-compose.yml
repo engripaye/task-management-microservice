@@ -1,17 +1,23 @@
-version: '3.8'
-
 services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - taskdb
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://taskdb:5432/taskdb
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: secret
+
   taskdb:
-    image: bitnami/postgresql:15
-    container_name: taskdb
+    image: postgres:15
     ports:
       - "5432:5432"
     environment:
-      - POSTGRESQL_USERNAME=admin
-      - POSTGRESQL_PASSWORD=secret
-      - POSTGRESQL_DATABASE=taskdb
-    volumes:
-      - taskdb_data:/bitnami/postgresql
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: taskdb
 
 volumes:
   taskdb_data:
