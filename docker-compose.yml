@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  taskdb:
+    image: bitnami/postgresql:15
+    container_name: taskdb
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRESQL_USERNAME=admin
+      - POSTGRESQL_PASSWORD=secret
+      - POSTGRESQL_DATABASE=taskdb
+    volumes:
+      - taskdb_data:/bitnami/postgresql
+
+volumes:
+  taskdb_data:
