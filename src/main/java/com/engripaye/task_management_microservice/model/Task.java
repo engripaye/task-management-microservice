@@ -13,6 +13,9 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
 
+    // Add this for optimistic locking
+    @Version
+    private Integer version;
 
 
     public Long getId() {
@@ -46,6 +49,9 @@ public class Task {
     public void setStatus(TaskStatus status) {
         this.status = status;
     }
+
+//    @Version
+//    private int version;
 
 
 }
