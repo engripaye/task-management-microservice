@@ -37,10 +37,6 @@ public class TaskController {
         return "OK";
     }
 
-    @GetMapping("/")
-    public String home() {
-        return "Task Management API is running!";
-    }
 
     // ✅ Update a task by ID
     @PutMapping("/{id}")
