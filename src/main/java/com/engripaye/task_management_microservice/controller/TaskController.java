@@ -32,6 +32,11 @@ public class TaskController {
         return taskRepository.findAll();
     }
 
+    @GetMapping("/healthz")
+    public String health() {
+        return "OK";
+    }
+
     // ✅ Update a task by ID
     @PutMapping("/{id}")
     public ResponseEntity<?> updateTask(@PathVariable Long id, @RequestBody Task updatedTask) {
